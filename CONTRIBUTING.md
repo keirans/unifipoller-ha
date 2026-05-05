@@ -39,6 +39,8 @@ Verify the binary is present and executable:
 docker run --rm ha-addon-unifi-poller:local /usr/bin/unpoller --version
 ```
 
+> **Note — `.dockerignore`:** The repository root contains a `.dockerignore` that excludes `openspec/` and other dev-only paths from the Docker build context. This is intentional: the Home Assistant Supervisor scans repository subdirectories for `config.yaml` files to discover add-ons, and would attempt to parse `openspec/config.yaml` as an add-on manifest if it were included. The CI workflows already scope the build context to `unifi-poller/` so this has no effect on CI builds — it only guards local and fallback builds.
+
 ---
 
 ## Local Run

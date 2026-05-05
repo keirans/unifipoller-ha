@@ -58,15 +58,19 @@ if bashio::config.true 'prometheus.enabled'; then
     cat >> /etc/unpoller/up.conf <<EOF
 
 [prometheus]
-  http_listen    = ":${PROMETHEUS_PORT}"
-  report_errors  = false
+  http_listen   = ":${PROMETHEUS_PORT}"
+  report_errors = false
+EOF
+else
+    cat >> /etc/unpoller/up.conf <<EOF
+
+[prometheus]
+  disable = true
 EOF
 fi
 
 bashio::log.info "Starting UniFi Poller..."
 
-if [ "${LOG_LEVEL}" = "debug" ]; then
-    exec /usr/bin/unpoller --config /etc/unpoller/up.conf --debug
-else
-    exec /usr/bin/unpoller --config /etc/unpoller/up.conf
-fi
+ARGS=(--config /etc/unpoller/up.conf)
+[ "${LOG_LEVEL}" = "debug" ] && ARGS+=(--debug)
+exec /usr/bin/unpoller "${ARGS[@]}"

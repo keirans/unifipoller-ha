@@ -111,6 +111,13 @@ The repository SHALL include a `CONTRIBUTING.md` at the root that explains how c
 - **WHEN** a contributor reads `CONTRIBUTING.md`
 - **THEN** they SHALL find instructions for running the JSON and YAML lint checks locally using `jq` and `yq` before submitting a pull request
 
+### Requirement: CONTRIBUTING.md explains Docker build context exclusion
+The `CONTRIBUTING.md` SHALL include an explanation that the `openspec/` directory is excluded from Docker images via `.dockerignore`, stating the reason (HA Supervisor scans subdirectories for `config.yaml` files and would attempt to parse `openspec/config.yaml` as an add-on manifest) and confirming that this has no effect on CI builds.
+
+#### Scenario: Contributor understands why openspec is excluded
+- **WHEN** a contributor reads the Local Build section of `CONTRIBUTING.md`
+- **THEN** they SHALL find a note that `openspec/` is listed in `.dockerignore` and an explanation that this prevents the HA Supervisor from misidentifying it as an add-on
+
 ### Requirement: OpenSpec referenced as the development workflow tool
 The `CONTRIBUTING.md` SHALL include a section explaining that development tasks, proposals, and design decisions are tracked using OpenSpec, and directing contributors to the `openspec/` directory.
 
