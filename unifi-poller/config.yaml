@@ -1,0 +1,48 @@
+name: UniFi Poller
+version: "2.29.0-1"
+slug: unifi_poller
+description: Collect UniFi Network Controller metrics and export to InfluxDB or Prometheus
+url: https://github.com/keirans/unifipoller-ha
+arch:
+  - amd64
+startup: services
+boot: auto
+init: false
+homeassistant: "2023.1.0"
+image: ghcr.io/keirans/ha-addon-unifi-poller:{arch}-{version}
+
+options:
+  controller:
+    url: "https://unifi.local:8443"
+    username: ""
+    password: ""
+    verify_ssl: false
+  influxdb:
+    enabled: true
+    url: "http://localhost:8086"
+    db: unifi
+    username: ""
+    password: ""
+  prometheus:
+    enabled: false
+    port: 9130
+  polling_interval: 30
+  log_level: info
+
+schema:
+  controller:
+    url: str
+    username: str
+    password: str
+    verify_ssl: bool
+  influxdb:
+    enabled: bool
+    url: str
+    db: str
+    username: str
+    password: str
+  prometheus:
+    enabled: bool
+    port: int
+  polling_interval: int
+  log_level: "info|debug|warn|error"

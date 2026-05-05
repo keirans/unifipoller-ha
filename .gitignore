@@ -1,0 +1,20 @@
+# Downloaded build artifacts
+*.tar.gz
+*.zip
+unpoller
+unifi-poller/unpoller
+
+# Docker
+.docker/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

@@ -1,0 +1,67 @@
+schema: spec-driven
+
+context: |
+  Home Assistant App for the UniFi Poller application. This app collects data
+  from a UniFi Network Controller and exports it to InfluxDB or Prometheus,
+  where it can be visualised using Grafana.
+
+  The external databases (InfluxDB or Prometheus) can be hosted either
+  externally or via other Home Assistant Apps, depending on the deployment
+  model.
+
+  Home Assistant Apps (formerly known as add-ons) extend the functionality of
+  Home Assistant by allowing additional services and applications to run
+  alongside the core system. Apps are configured via the Supervisor panel.
+
+  Configuration Approach:
+    Configuration is designed to be flexible while remaining easy to use.
+    The add-on leverages the standard Home Assistant add-on configuration
+    file structure, allowing users to define options in a consistent and
+    predictable way. Sensible defaults should be provided where possible,
+    with the ability to override settings as needed for more advanced use
+    cases.
+
+  Under the hood, apps are distributed as container images published to
+  registries such as GitHub Container Registry or Docker Hub. Developers can
+  group multiple apps within a single repository for easier distribution and
+  community sharing.
+
+  Development Approach:
+  https://developers.home-assistant.io/docs/apps/
+
+  Tech Stack:
+    - Bash
+    - jq
+    - yq
+    - Docker
+    - GitHub
+    - GitHub Actions
+
+  Docker:
+    Base image: ghcr.io/home-assistant/base:latest
+    Architecture: amd64
+
+  CI/CD:
+    GitHub Actions is used to build, validate, and package the app.
+    JSON and YAML files are validated using jq and yq.
+
+  Packaging:
+    The Unpoller binary is written in Go and sourced from the official
+    Unpoller GitHub repository. Built images are published to GitHub
+    Container Registry.
+
+  Versioning:
+    Uses the upstream UniFi Poller version with an additional suffix
+    for the add-on version.
+    Example:
+      Upstream version: v2.9.0
+      Add-on version:  v2.9.0-1
+
+  Documentation:
+    Maintained as Markdown files in the root of the repository.
+
+  Additional References:
+    - Home Assistant Apps Tutorial:
+      https://developers.home-assistant.io/docs/apps/tutorial
+    - Unpoller Documentation and Releases:
+      https://github.com/unpoller/unpoller
