@@ -28,7 +28,7 @@ Once the repository is added, install this add-on from the Add-on Store, configu
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `controller.url` | string | `https://unifi.local:8443` | Full URL of the UniFi controller, including port |
+| `controller.url` | string | `https://unifi.local:8443` | Full URL of the UniFi controller — see note below |
 | `controller.username` | string | _(required)_ | Username of the UniFi account used for polling |
 | `controller.password` | string | _(required)_ | Password for the above account |
 | `controller.verify_ssl` | boolean | `false` | Verify the controller's SSL certificate. Disable for self-signed certs |
@@ -42,6 +42,15 @@ Once the repository is added, install this add-on from the Add-on Store, configu
 | `polling_interval` | integer | `30` | How often (in seconds) to poll the controller |
 | `log_level` | string | `info` | Log verbosity: `info`, `debug`, `warn`, or `error` |
 
+> **Controller URL by hardware type:**
+>
+> | Controller type | URL format | Example |
+> |---|---|---|
+> | UDM, UDM Pro, UDM SE, UCG | `https://<ip>` (no port) | `https://10.0.0.1` |
+> | CloudKey Gen2, self-hosted Network Application | `https://<ip>:8443` | `https://10.0.0.1:8443` |
+>
+> UniFi OS devices (UDM family) use port 443 and a different API path. Using `:8443` with a UDM will result in a 404 authentication error.
+>
 > **Note:** Only a single UniFi controller is supported per add-on instance.
 
 ---
