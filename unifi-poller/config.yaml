@@ -9,7 +9,7 @@ startup: services
 boot: auto
 init: false
 homeassistant: "2023.1.0"
-image: ghcr.io/keirans/ha-addon-unifi-poller:{arch}-{version}
+image: ghcr.io/keirans/ha-addon-unifi-poller-{arch}
 
 options:
   controller:
@@ -45,4 +45,4 @@ schema:
     enabled: bool
     port: int
   polling_interval: int
-  log_level: "info|debug|warn|error"
+  log_level: "match(info|debug|warn|error)"

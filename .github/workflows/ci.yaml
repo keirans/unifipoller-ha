@@ -58,7 +58,7 @@ jobs:
           context: unifi-poller
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           tags: |
-            ghcr.io/keirans/ha-addon-unifi-poller:amd64-latest
-            ghcr.io/keirans/ha-addon-unifi-poller:amd64-${{ steps.version.outputs.addon_version }}
+            ghcr.io/keirans/ha-addon-unifi-poller-amd64:latest
+            ghcr.io/keirans/ha-addon-unifi-poller-amd64:${{ steps.version.outputs.addon_version }}
           build-args: |
             UNPOLLER_VERSION=${{ steps.version.outputs.unpoller_version }}
