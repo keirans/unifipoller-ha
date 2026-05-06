@@ -4,6 +4,8 @@
 
 A Home Assistant add-on repository that packages [UniFi Poller](https://github.com/unpoller/unpoller) as a supervised add-on. Collect metrics from your UniFi Network Controller and export them to InfluxDB or Prometheus for visualisation in Grafana — all managed from the Home Assistant Supervisor.
 
+This is a personal homelab project maintained in spare time and shared for community use. It supports the maintainer's own setup first — bug reports and fixes via pull requests are encouraged and appreciated.
+
 ---
 
 ## Add-ons
@@ -58,7 +60,7 @@ See the [full documentation](unifi-poller/DOCS.md) for all configuration options
 | Architecture | Supported |
 |---|---|
 | amd64 (x86-64) | Yes |
-| arm64 | Planned |
+| aarch64 (arm64) | Yes |
 
 ---
 

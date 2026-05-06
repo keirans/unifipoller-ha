@@ -5,6 +5,7 @@ description: Collect UniFi Network Controller metrics and export to InfluxDB or 
 url: https://github.com/keirans/unifipoller-ha
 arch:
   - amd64
+  - aarch64
 startup: services
 boot: auto
 init: false

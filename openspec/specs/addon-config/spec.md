@@ -8,7 +8,7 @@ The add-on SHALL include a `config.yaml` at the root of the add-on directory tha
 - **THEN** the Supervisor SHALL parse `config.yaml` without errors and present the add-on in the store UI
 
 ### Requirement: Add-on metadata fields
-The `config.yaml` SHALL declare `name`, `version`, `slug`, `description`, `arch`, `url`, `startup`, `boot`, `init`, and `homeassistant` fields with correct values.
+The `config.yaml` SHALL declare `name`, `version`, `slug`, `description`, `arch`, `url`, `startup`, `boot`, `init`, and `homeassistant` fields with correct values. The `arch` field SHALL list both `amd64` and `aarch64`.
 
 #### Scenario: Version string format
 - **WHEN** the add-on `version` field is inspected
@@ -18,9 +18,9 @@ The `config.yaml` SHALL declare `name`, `version`, `slug`, `description`, `arch`
 - **WHEN** the add-on is installed on an amd64 host
 - **THEN** the Supervisor SHALL find `amd64` in the `arch` list and proceed with installation
 
-#### Scenario: Unsupported architecture
-- **WHEN** the add-on is installed on an arm64-only host
-- **THEN** the Supervisor SHALL display an architecture incompatibility error
+#### Scenario: aarch64 host can install the add-on
+- **WHEN** a user on a Home Assistant Green (aarch64) adds the repository and installs the add-on
+- **THEN** the Supervisor SHALL find `aarch64` in the `arch` list and proceed with installation
 
 ### Requirement: Options schema with sensible defaults
 The `config.yaml` SHALL declare an `options` block with default values and a `schema` block that validates user-supplied values before the add-on starts.
@@ -81,7 +81,7 @@ The `config.yaml` SHALL reference the container image published to GitHub Contai
 
 #### Scenario: Image pulled on install
 - **WHEN** the add-on is installed
-- **THEN** the Supervisor SHALL pull the image matching `ghcr.io/keirans/ha-addon-unifi-poller:{arch}-{version}` without requiring a local build
+- **THEN** the Supervisor SHALL pull the image matching `ghcr.io/keirans/ha-addon-unifi-poller-{arch}:{version}` without requiring a local build
 
 ### Requirement: Repository manifest at repo root
 The repository SHALL include a `repository.yaml` file at the root level so the Home Assistant Supervisor recognises it as a valid add-on repository when the user adds `https://github.com/keirans/unifipoller-ha` as a custom source.

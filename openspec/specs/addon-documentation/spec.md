@@ -53,7 +53,15 @@ The `README.md` SHALL include a dedicated Installation section with numbered ste
 - **THEN** they SHALL see an "Add Repository" badge or button that deep-links directly to the HA Supervisor repository dialog pre-filled with the repository URL
 
 ### Requirement: Architecture support documented
-Both `DOCS.md` and `README.md` SHALL clearly state which CPU architectures are supported by the add-on.
+Both `DOCS.md` and `README.md` SHALL clearly state which CPU architectures are supported by the add-on. Both `amd64` and `aarch64` SHALL be listed as officially supported, with no "planned" or provisional status.
+
+#### Scenario: aarch64 shown as supported in DOCS.md
+- **WHEN** a user on an aarch64 device reads `DOCS.md`
+- **THEN** they SHALL see `aarch64` listed as officially supported with no caveats
+
+#### Scenario: aarch64 shown as supported in README.md
+- **WHEN** a prospective user browses the repository on GitHub
+- **THEN** the README architecture table SHALL show both `amd64` and `aarch64` as supported
 
 #### Scenario: Unsupported architecture guidance
 - **WHEN** a user on an unsupported architecture reads the documentation

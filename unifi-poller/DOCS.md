@@ -115,10 +115,12 @@ This add-on supports the following CPU architectures:
 | Architecture | Supported |
 |---|---|
 | amd64 (x86-64) | Yes |
-| arm64 (aarch64) | Not yet — planned for a future release |
+| aarch64 (arm64) | Yes |
 | armv7 | Not yet |
 
-If you require arm64 support, please [open an issue](https://github.com/keirans/unifipoller-ha/issues).
+aarch64 builds are provided for compatibility with devices such as the Home Assistant Green and Raspberry Pi. The project maintainers do not run Home Assistant on ARM hardware, so these builds are tested on a best-effort basis. If you encounter issues on aarch64, feedback and pull requests are very welcome.
+
+If you require armv7 or another architecture, please [open an issue](https://github.com/keirans/unifipoller-ha/issues).
 
 ---
 
